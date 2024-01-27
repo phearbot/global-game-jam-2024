@@ -22,12 +22,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnLevel(0);
+        
         //SpawnLevel(1);
         //SpawnLevel(2);
 
-        StartLevel();
-        //StartCoroutine(ZoomIntoHead());
+        StartCoroutine(StartLevel());
+       
 
     }
 
@@ -47,23 +47,28 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void StartLevel()
+    public IEnumerator StartLevel()
     {
-        // should start outside the guys head
+        // spawns level
+        SpawnLevel(currentLevelIndex);
+        currentLevelIndex++;
 
-        // funny guy should say something
-        dialoguePanel.SetMessage("oh boy we're going to get going");
+        // sets message with scrolling text
+        yield return StartCoroutine(dialoguePanel.SetMessage("oh boy we're going to get going!!"));
 
         // zoom into the guys head
+        yield return StartCoroutine(ZoomIntoHead());
 
         // give player control
-
+        state = STATE.playing;
 
     }
 
-    public void EndLevel()
+    public IEnumerator EndLevel()
     {
+        state = STATE.waiting;
 
+        yield return StartCoroutine(ZoomOutOfHead());
     }
 
     IEnumerator ZoomIntoHead()

@@ -22,16 +22,11 @@ public class Dialogue : MonoBehaviour
         
     }
 
-    private void OnEnable()
-    {
-        
-    }
-
-    public void SetMessage(string _message)
+    public IEnumerator SetMessage(string _message)
     {
         messageTMP.text = _message;
 
-        StartCoroutine(ScrollText());
+        yield return StartCoroutine(ScrollText());
     }
 
     IEnumerator ScrollText()
@@ -39,12 +34,15 @@ public class Dialogue : MonoBehaviour
 
         while (visibleCharacters < messageTMP.text.Length)
         {
-            print("vischar: " + visibleCharacters);
-            print(textScrollSpeed + " : " + Time.deltaTime * textScrollSpeed);
             visibleCharacters += Time.deltaTime * textScrollSpeed;
             messageTMP.maxVisibleCharacters = (int)visibleCharacters;
 
             yield return null;
         }
+    }
+
+    public IEnumerator ReadJoke()
+    {
+        yield return null;
     }
 }
