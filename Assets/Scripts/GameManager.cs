@@ -2,16 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
     List<GameObject> Levels;
 
-    [SerializeField]
-    CinemachineVirtualCamera OutsideCamera;
-    CinemachineVirtualCamera InsideCamera;
-
+    [SerializeField] CinemachineVirtualCamera outsideCamera;
+    [SerializeField] CinemachineVirtualCamera insideCamera;
+    [SerializeField] Dialogue dialoguePanel;
 
     int currentLevelIndex = 0;
     GameObject currentLevel = null;
@@ -48,11 +48,15 @@ public class GameManager : MonoBehaviour
     public void StartLevel()
     {
         // should start outside the guys head
+
         // funny guy should say something
+        dialoguePanel.SetMessage("oh boy we're going to get going");
 
         // zoom into the guys head
 
         // give player control
+
+
     }
 
     public void EndLevel()
@@ -62,7 +66,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ZoomIntoHead()
     {
-        var dolly = OutsideCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
+        var dolly = outsideCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
         while (dolly.m_PathPosition < 1)
         {
             dolly.m_PathPosition += Time.deltaTime;
@@ -74,7 +78,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator ZoomOutOfHead()
     {
-        var dolly = OutsideCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
+        var dolly = outsideCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
         while (dolly.m_PathPosition > 0)
         {
             dolly.m_PathPosition -= Time.deltaTime;
@@ -82,5 +86,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
 
 }
