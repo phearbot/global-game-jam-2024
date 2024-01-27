@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera outsideCamera;
     [SerializeField] CinemachineVirtualCamera insideCamera;
     [SerializeField] Dialogue dialoguePanel;
+    [SerializeField] GameObject funnyGuy;
 
     int currentLevelIndex = 0;
     GameObject currentLevel = null;
@@ -60,6 +61,9 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(ZoomIntoHead());
 
         // give player control
+        dialoguePanel.gameObject.SetActive(false);
+        funnyGuy.SetActive(false);
+        outsideCamera.enabled = false;
         state = STATE.playing;
 
     }
