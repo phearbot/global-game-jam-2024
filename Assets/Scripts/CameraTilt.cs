@@ -5,16 +5,17 @@ using UnityEngine;
 public class CameraTilt : MonoBehaviour
 {   
     private Player player;
-    public float rotationConstraintX = 10.0f;
-    public float rotationConstraintZ = 5.0f;
+    public float tiltMultiplier = 10; // This variable is affecting where the "clamp" is.
+    public float rotationMoveSpeed = 5.0f;
     public float rotationReturnSpeed = 1.0f;
+
 
     private void Start()
     {
         player = FindObjectOfType<Player>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
         Move();
     }
@@ -24,9 +25,10 @@ public class CameraTilt : MonoBehaviour
         Vector3 forceVector = player.forceVector;
 
         if (forceVector != Vector3.zero)
-        {   
+        {
             // Apply rotation to the camera
-            transform.Rotate(Mathf.Clamp(forceVector.z, -rotationConstraintZ, rotationConstraintZ), 0, Mathf.Clamp(-forceVector.x, -rotationConstraintX, rotationConstraintX), Space.Self);
+            Vector3 targetRotation = new Vector3(-forceVector.z * tiltMultiplier, 0, forceVector.x * tiltMultiplier);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(targetRotation), Time.deltaTime * rotationMoveSpeed);
         }
         else
         {
