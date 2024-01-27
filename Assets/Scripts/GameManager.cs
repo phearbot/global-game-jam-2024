@@ -26,7 +26,9 @@ public class GameManager : MonoBehaviour
         //SpawnLevel(1);
         //SpawnLevel(2);
 
-        StartCoroutine(ZoomIntoHead());
+        StartLevel();
+        //StartCoroutine(ZoomIntoHead());
+
     }
 
     // Update is called once per frame

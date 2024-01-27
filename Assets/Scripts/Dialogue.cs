@@ -5,6 +5,7 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
+    [SerializeField] float textScrollSpeed = 30;
 
     [SerializeField] TextMeshProUGUI messageTMP;
     float visibleCharacters = 0;
@@ -38,6 +39,9 @@ public class Dialogue : MonoBehaviour
 
         while (visibleCharacters < messageTMP.text.Length)
         {
+            print("vischar: " + visibleCharacters);
+            print(textScrollSpeed + " : " + Time.deltaTime * textScrollSpeed);
+            visibleCharacters += Time.deltaTime * textScrollSpeed;
             messageTMP.maxVisibleCharacters = (int)visibleCharacters;
 
             yield return null;

@@ -1202,7 +1202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe2ac2d4817204c43af3d69cab76bab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  message: {fileID: 617507947}
+  textScrollSpeed: 30
+  messageTMP: {fileID: 617507947}
 --- !u!1001 &4910259243048938592
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1225,7 +1226,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialoguePanel
       value: 
-      objectReference: {fileID: 1943750346}
+      objectReference: {fileID: 1943750350}
     - target: {fileID: 1780788301491614097, guid: 239500535c362425f867bd4e0e8d376f,
         type: 3}
       propertyPath: outsideCamera
