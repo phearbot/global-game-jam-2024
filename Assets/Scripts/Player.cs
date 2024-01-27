@@ -5,10 +5,11 @@ public class Player : MonoBehaviour
     public float moveForce = 1.0f;
     public float maxSpeed = 5.0f;  
     public float lerpSpeed = 2.0f; 
-    [SerializeField]
-    private float currentSpeed = 0.0f;
-    [SerializeField]
+    public float currentSpeed = 0.0f;
     Rigidbody rb;
+    public Vector3 forceVector;
+
+
 
 
     private void Start()
@@ -39,7 +40,7 @@ public class Player : MonoBehaviour
 
         Vector3 forwardForce = new Vector3(0, 0, moveForce * forwardInput);
         Vector3 horizontalForce = new Vector3(moveForce * horizontalInput, 0, 0);
-        Vector3 forceVector = forwardForce + horizontalForce;
+        forceVector = forwardForce + horizontalForce;
 
         // Lerp the current speed towards the target speed based on whether there is input
         float targetSpeed = forceVector.magnitude * maxSpeed;
