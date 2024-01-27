@@ -10,22 +10,21 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     CinemachineVirtualCamera OutsideCamera;
+    CinemachineVirtualCamera InsideCamera;
 
 
     int currentLevelIndex = 0;
     GameObject currentLevel = null;
 
-    public enum STATE { waiting, playing }
-    STATE state = STATE.waiting;
+    public enum STATE { intro, waiting, playing }
+    STATE state = STATE.intro;
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnLevel(0);
-
-        SpawnLevel(1);
-
-        SpawnLevel(2);
+        //SpawnLevel(1);
+        //SpawnLevel(2);
 
         StartCoroutine(ZoomIntoHead());
     }
@@ -71,7 +70,6 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(ZoomOutOfHead());
     }
 
     IEnumerator ZoomOutOfHead()
@@ -84,4 +82,5 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
     }
+
 }

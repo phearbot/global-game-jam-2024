@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 453581713}
   serializedVersion: 2
   m_LocalRotation: {x: 0.058763873, y: 0.020364875, z: -0.0011990407, w: 0.99806345}
-  m_LocalPosition: {x: 1.3520447, y: 3.6094682, z: -23.776112}
+  m_LocalPosition: {x: 1.9720447, y: 3.6094682, z: -47.74611}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Waypoints:
   - position: {x: 0, y: 0, z: -5}
     roll: 0
-  - position: {x: -3.375022, y: -1.9419298, z: 20.20197}
+  - position: {x: 0, y: 0, z: 42.59023}
     roll: 0
 --- !u!4 &1405799991
 Transform:
@@ -635,7 +635,7 @@ Transform:
   m_GameObject: {fileID: 1405799989}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.62, y: 0, z: -23.97}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
