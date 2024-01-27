@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028373, g: 0.22571398, b: 0.30692294, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -221,8 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b853dfb3d9893724ea259fdd9e2e4e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationConstraintX: 10
-  rotationConstraintZ: 5
+  tiltMultiplier: 10
   rotationMoveSpeed: 5
   rotationReturnSpeed: 1
 --- !u!1 &335359359
@@ -853,6 +852,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a30513cb44d0b5a429d4739530575907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scrollSpeed: 0.02
+  rend: {fileID: 0}
 --- !u!1 &1122005739
 GameObject:
   m_ObjectHideFlags: 0
@@ -865,7 +866,6 @@ GameObject:
   - component: {fileID: 1122005743}
   - component: {fileID: 1122005742}
   - component: {fileID: 1122005741}
-  - component: {fileID: 1122005740}
   m_Layer: 0
   m_Name: Arena
   m_TagString: Untagged
@@ -873,21 +873,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1122005740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1122005739}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59007c2bf15ed21408830faa103e1193, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotationSpeed: 45
-  lerpTimeReg: 0.5
-  lerpTimeFast: 1
 --- !u!65 &1122005741
 BoxCollider:
   m_ObjectHideFlags: 0
