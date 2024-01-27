@@ -55,7 +55,9 @@ public class GameManager : MonoBehaviour
         currentLevelIndex++;
 
         // sets message with scrolling text
-        yield return StartCoroutine(dialoguePanel.SetMessage("oh boy we're going to get going!!"));
+        yield return StartCoroutine(dialoguePanel.SetMessage("Hey there, why don't you hop in my head and help me think of a joke?"));
+        yield return new WaitForSeconds(.5f);
+        yield return StartCoroutine(dialoguePanel.SetMessage("What are you waiting for? Get in there!!"));
 
         // zoom into the guys head
         yield return StartCoroutine(ZoomIntoHead());

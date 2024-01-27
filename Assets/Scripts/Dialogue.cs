@@ -24,6 +24,7 @@ public class Dialogue : MonoBehaviour
 
     public IEnumerator SetMessage(string _message)
     {
+        visibleCharacters = 0;
         messageTMP.text = _message;
 
         yield return StartCoroutine(ScrollText());
