@@ -50,7 +50,35 @@ public class AudioManager : MonoBehaviour
         s.source.Play();
     }
 
-	public void PlayNoRestartIfPlaying(string name)
+    public void PlaySubclip(string name, float startTimeSeconds, float durationSeconds)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return;
+        }
+
+        StartCoroutine(PlaySubclipCoroutine(name, startTimeSeconds, durationSeconds));
+    }
+
+    IEnumerator PlaySubclipCoroutine(string name, float startTimeSeconds, float durationSeconds)
+    {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        s.source.volume = s.volume;
+        float currentTime = 0;
+
+        s.source.time = startTimeSeconds;
+        s.source.Play();
+        while (currentTime < durationSeconds)
+        {
+            currentTime += Time.deltaTime;
+            yield return null;
+        }
+        s.source.Stop();
+    }
+
+    public void PlayNoRestartIfPlaying(string name)
 	{
 		Sound s = Array.Find(sounds, sound => sound.name == name);
 		if (s == null)
@@ -141,7 +169,7 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Play();
-        s.source.time = 12.1f; // Hard coding this is stupid, there should be an optional parameter to adjust start time of the sound
+        //s.source.time = 12.1f; // Hard coding this is stupid, there should be an optional parameter to adjust start time of the sound
         s.source.volume = 0;
         float currentTime = 0;
         while (s.source.volume < s.volume)

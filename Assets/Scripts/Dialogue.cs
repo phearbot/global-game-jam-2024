@@ -22,6 +22,12 @@ public class Dialogue : MonoBehaviour
         
     }
 
+    public void ZeroOutMessage()
+    {
+        messageTMP.text = "";
+    }
+
+
     public IEnumerator SetMessage(string _message)
     {
         visibleCharacters = 0;

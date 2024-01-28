@@ -5,25 +5,33 @@ using Cinemachine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
+//public enum STATE { intro, waiting, playing }
+
 public class GameManager : MonoBehaviour
 {
+    public GameObject playerPrefab;
+
     [SerializeField]
     List<GameObject> Levels;
 
     [SerializeField] CinemachineVirtualCamera outsideCamera;
     [SerializeField] CinemachineVirtualCamera insideCamera;
     [SerializeField] Dialogue dialoguePanel;
-    [SerializeField] CollectionPanel collectionPanel;
+    public CollectionPanel collectionPanel;
     [SerializeField] GameObject funnyGuy;
 
     int currentLevelIndex = 0;
     GameObject currentLevel = null;
 
-    public enum STATE { intro, waiting, playing }
-    STATE state = STATE.intro;
+
+    //public STATE state = STATE.intro;
+    public bool playerCanMove = false;
 
     // Collectible stats
     int itemsCollected = 0;
+    public int itemsInLevel = -1;
+
+    public string joke = "";
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +54,7 @@ public class GameManager : MonoBehaviour
         
     }
 
+
     void SpawnLevel(int levelIndex)
     {
         if (currentLevel != null)
@@ -64,6 +73,8 @@ public class GameManager : MonoBehaviour
         SpawnLevel(currentLevelIndex);
         currentLevelIndex++;
 
+        FindObjectOfType<Player>().transform.position = new Vector3(0, 5.5f, 0);
+
         // sets message with scrolling text
         yield return StartCoroutine(dialoguePanel.SetMessage("Hey there, why don't you hop in my head and help me think of a joke?"));
         yield return new WaitForSeconds(.5f);
@@ -76,16 +87,26 @@ public class GameManager : MonoBehaviour
         dialoguePanel.gameObject.SetActive(false);
         collectionPanel.gameObject.SetActive(true);
         funnyGuy.SetActive(false);
-        outsideCamera.enabled = false;
-        state = STATE.playing;
+        // state = STATE.playing;
+        playerCanMove = true;
 
     }
 
     public IEnumerator EndLevel()
     {
-        state = STATE.waiting;
-
+        // state = STATE.waiting;
+        playerCanMove = false;
         yield return StartCoroutine(ZoomOutOfHead());
+        yield return new WaitForSeconds(.5f);
+        yield return StartCoroutine(dialoguePanel.SetMessage("Oh, I remember now!"));
+        yield return new WaitForSeconds(.5f);
+        yield return StartCoroutine(dialoguePanel.SetMessage(joke));
+        PlayRandomLaugh();
+        yield return new WaitForSeconds(6.5f);
+        yield return StartCoroutine(dialoguePanel.SetMessage("Ha ha... That one was pretty good."));
+
+
+        yield return StartLevel();
     }
 
     // Used when player falls out of arena
@@ -98,7 +119,17 @@ public class GameManager : MonoBehaviour
     // Will need to switch to current scene
     private void Reload()
     {
-        SceneManager.LoadScene(1);
+        //itemsCollected = 0;
+        //collectionPanel.ResetCollectedStates();
+
+        // respawn the collectibles
+        // respawn the player
+
+        GameObject _player = Instantiate(playerPrefab);
+        _player.transform.position = new Vector3(0, 5.5f, 0);
+
+
+        // SceneManager.LoadScene(1);
     }
 
     // Used for item collection
@@ -106,6 +137,13 @@ public class GameManager : MonoBehaviour
     {
         print($"Collected: " + collectible.tag);
         itemsCollected += 1;
+        collectionPanel.SetWordToCompleteByColorTag(collectible.tag);
+
+
+        if (itemsCollected == itemsInLevel)
+        {
+            StartCoroutine(EndLevel());
+        }
     }
 
     IEnumerator ZoomIntoHead()
@@ -117,11 +155,16 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
-
+        outsideCamera.enabled = false;
     }
 
     IEnumerator ZoomOutOfHead()
     {
+        outsideCamera.enabled = true;
+        funnyGuy.SetActive(true);
+        dialoguePanel.gameObject.SetActive(true);
+        dialoguePanel.ZeroOutMessage();
+
         var dolly = outsideCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
         while (dolly.m_PathPosition > 0)
         {
@@ -129,6 +172,20 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    void PlayRandomLaugh()
+    {
+        int selector = Random.Range(0, 4);
+
+        if (selector == 0)
+            AudioManager.instance.PlaySubclip("laugh", 1f, 6f);
+        else if (selector == 1)
+            AudioManager.instance.PlaySubclip("laugh", 7f, 13f);
+        else if (selector == 2)
+            AudioManager.instance.PlaySubclip("laugh", 14f, 20f);
+        else if (selector == 3)
+            AudioManager.instance.PlaySubclip("laugh", 20f, 26f);
     }
 
 
