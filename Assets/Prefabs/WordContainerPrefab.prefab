@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: word
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: f57debd55519e43f892ff5f67f3c706b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83b58dd3754884065bda49d5c7ba894e, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 2f258458405d349c4bf4747d08218934, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -203,15 +203,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: word
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 3540d26ef652840de88b24e26f1f1847, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 83b58dd3754884065bda49d5c7ba894e, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 473eddf2533a847dc9087bf024553677, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

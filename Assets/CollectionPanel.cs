@@ -38,6 +38,7 @@ public class CollectionPanel : MonoBehaviour
 
         container.container.text = word;
         container.container.outlineColor = color;
+        container.container.faceColor = color;
 
         container.fill.text = word;
         container.fill.enabled = false;
