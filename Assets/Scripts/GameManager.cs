@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioManager.instance.FadeinBGM("BGM");
+        AudioManager.instance.Play("BGM");
 
         collectionPanel.gameObject.SetActive(false);
         dialoguePanel.gameObject.SetActive(false);
@@ -77,8 +77,9 @@ public class GameManager : MonoBehaviour
 
         // sets message with scrolling text
         yield return StartCoroutine(dialoguePanel.SetMessage("Hey there, why don't you hop in my head and help me think of a joke?"));
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         yield return StartCoroutine(dialoguePanel.SetMessage("What are you waiting for? Get in there!!"));
+        yield return new WaitForSeconds(.5f);
 
         // zoom into the guys head
         yield return StartCoroutine(ZoomIntoHead());

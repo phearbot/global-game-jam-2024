@@ -47,10 +47,10 @@ MonoBehaviour:
   BGMFadeTimer: 2
   sounds:
   - name: BGM
-    clip: {fileID: 8300000, guid: 226626865301846f0b6a26238e9d8c1f, type: 3}
+    clip: {fileID: 8300000, guid: ddcbf857824954d0a8a72dac41d89bd2, type: 3}
     volume: 0.683
     pitch: 1
-    loop: 0
+    loop: 1
     playOnAwake: 0
     source: {fileID: 0}
   - name: scroll
@@ -62,7 +62,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: laugh
     clip: {fileID: 8300000, guid: 1c44c7528476f4f989fbdeaebcfed51b, type: 3}
-    volume: 0.698
+    volume: 1
     pitch: 1
     loop: 0
     playOnAwake: 0
