@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         // audio hook here
-        Invoke("Reload", 0.5f);
+        Invoke("Reload", 1f);
     }
 
     // Will need to switch to current scene

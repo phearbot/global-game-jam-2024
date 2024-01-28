@@ -8,6 +8,7 @@ public class CameraTilt : MonoBehaviour
     public float tiltMultiplier = 10; // This variable is affecting where the "clamp" is.
     public float rotationMoveSpeed = 5.0f;
     public float rotationReturnSpeed = 1.0f;
+    public bool lockCameraToPlayer = true;
 
 
     private void Start()
@@ -18,6 +19,11 @@ public class CameraTilt : MonoBehaviour
     void Update()
     {
         Move();
+        if (lockCameraToPlayer)
+        {
+            LockCameraToPlayer();
+            
+        }
     }
 
     public void Move()
@@ -36,5 +42,11 @@ public class CameraTilt : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(0, 0, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationReturnSpeed);
         }
+    }
+
+    // Keep camera centered above player
+    void LockCameraToPlayer()
+    {   
+        transform.position = new Vector3(player.transform.position.x, 0, player.transform.position.z);
     }
 }
