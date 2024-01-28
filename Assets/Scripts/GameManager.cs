@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera outsideCamera;
     [SerializeField] CinemachineVirtualCamera insideCamera;
     [SerializeField] Dialogue dialoguePanel;
+    [SerializeField] CollectionPanel collectionPanel;
+    [SerializeField] GameObject funnyGuy;
 
     int currentLevelIndex = 0;
     GameObject currentLevel = null;
@@ -22,12 +24,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnLevel(0);
+        collectionPanel.gameObject.SetActive(false);
+        dialoguePanel.gameObject.SetActive(false);
         //SpawnLevel(1);
         //SpawnLevel(2);
 
-        StartLevel();
-        //StartCoroutine(ZoomIntoHead());
+        StartCoroutine(StartLevel());
+       
 
     }
 
@@ -47,23 +50,37 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void StartLevel()
+    public IEnumerator StartLevel()
     {
-        // should start outside the guys head
+        yield return new WaitForSeconds(.5f);
+        dialoguePanel.gameObject.SetActive(true);
 
-        // funny guy should say something
-        dialoguePanel.SetMessage("oh boy we're going to get going");
+        // spawns level
+        SpawnLevel(currentLevelIndex);
+        currentLevelIndex++;
+
+        // sets message with scrolling text
+        yield return StartCoroutine(dialoguePanel.SetMessage("Hey there, why don't you hop in my head and help me think of a joke?"));
+        yield return new WaitForSeconds(.5f);
+        yield return StartCoroutine(dialoguePanel.SetMessage("What are you waiting for? Get in there!!"));
 
         // zoom into the guys head
+        yield return StartCoroutine(ZoomIntoHead());
 
         // give player control
-
+        dialoguePanel.gameObject.SetActive(false);
+        collectionPanel.gameObject.SetActive(true);
+        funnyGuy.SetActive(false);
+        outsideCamera.enabled = false;
+        state = STATE.playing;
 
     }
 
-    public void EndLevel()
+    public IEnumerator EndLevel()
     {
+        state = STATE.waiting;
 
+        yield return StartCoroutine(ZoomOutOfHead());
     }
 
     IEnumerator ZoomIntoHead()

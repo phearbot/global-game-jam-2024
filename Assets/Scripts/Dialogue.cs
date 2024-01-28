@@ -22,29 +22,30 @@ public class Dialogue : MonoBehaviour
         
     }
 
-    private void OnEnable()
+    public IEnumerator SetMessage(string _message)
     {
-        
-    }
-
-    public void SetMessage(string _message)
-    {
+        visibleCharacters = 0;
         messageTMP.text = _message;
 
-        StartCoroutine(ScrollText());
+        yield return StartCoroutine(ScrollText());
     }
 
     IEnumerator ScrollText()
     {
-
+        AudioManager.instance.Play("scroll");
         while (visibleCharacters < messageTMP.text.Length)
         {
-            print("vischar: " + visibleCharacters);
-            print(textScrollSpeed + " : " + Time.deltaTime * textScrollSpeed);
             visibleCharacters += Time.deltaTime * textScrollSpeed;
             messageTMP.maxVisibleCharacters = (int)visibleCharacters;
 
             yield return null;
         }
+        AudioManager.instance.Stop("scroll");
     }
+
+    public IEnumerator ReadJoke()
+    {
+        yield return null;
+    }
+
 }
