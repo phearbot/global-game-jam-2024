@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera outsideCamera;
     [SerializeField] CinemachineVirtualCamera insideCamera;
     [SerializeField] Dialogue dialoguePanel;
+    [SerializeField] CollectionPanel collectionPanel;
     [SerializeField] GameObject funnyGuy;
 
     int currentLevelIndex = 0;
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        collectionPanel.gameObject.SetActive(false);
         //SpawnLevel(1);
         //SpawnLevel(2);
 
@@ -64,6 +65,7 @@ public class GameManager : MonoBehaviour
 
         // give player control
         dialoguePanel.gameObject.SetActive(false);
+        collectionPanel.gameObject.SetActive(true);
         funnyGuy.SetActive(false);
         outsideCamera.enabled = false;
         state = STATE.playing;
