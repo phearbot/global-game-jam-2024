@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.FadeinBGM("BGM");
+
         collectionPanel.gameObject.SetActive(false);
         dialoguePanel.gameObject.SetActive(false);
         //SpawnLevel(1);

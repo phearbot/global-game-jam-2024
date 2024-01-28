@@ -1842,6 +1842,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2443018610425041428, guid: 1bd81d40ab1de4237b9740703c0fdf64,
         type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 226626865301846f0b6a26238e9d8c1f, type: 3}
+    - target: {fileID: 2443018610425041428, guid: 1bd81d40ab1de4237b9740703c0fdf64,
+        type: 3}
       propertyPath: sounds.Array.data[0].name
       value: BGM
       objectReference: {fileID: 0}
