@@ -6,15 +6,18 @@ public class Player : MonoBehaviour
     public float maxSpeed = 5.0f;  
     public float lerpSpeed = 2.0f; 
     public float currentSpeed = 0.0f;
+    GameManager gm;
     Rigidbody rb;
     public Vector3 forceVector;
-
-
-
+    public MeshRenderer mr;
+    public ParticleSystem ps;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        mr = GetComponent<MeshRenderer>();
+        gm = FindAnyObjectByType<GameManager>();
+        ps = GetComponent<ParticleSystem>();
     }
 
     void FixedUpdate()
@@ -48,5 +51,19 @@ public class Player : MonoBehaviour
 
         // Apply the force using the lerped speed
         rb.AddForce(forceVector.normalized * currentSpeed, ForceMode.Impulse);
+    }
+
+    public void PlayerDeath()
+    {
+        // Audio hook here:
+
+        // Visual hook here:
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        mr.enabled = false;
+        var em = ps.emission;
+        em.enabled = true;
+        ps.Play();
+        gm.RestartLevel();
+        Destroy(this.gameObject, 1f);
     }
 }

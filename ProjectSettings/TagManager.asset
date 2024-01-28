@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Water
+  - Collectible-Yellow
+  - Collectible-Green
+  - Collectible-Blue
+  - Collectible-Red
   layers:
   - Default
   - TransparentFX
