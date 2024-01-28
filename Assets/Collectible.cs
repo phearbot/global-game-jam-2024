@@ -33,8 +33,7 @@ public class Collectible : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider collision)
-    {
-        //print($"Collision recoreded between " + this.gameObject.name + " & " + collision.gameObject.tag);
+    {   
         if (collision.gameObject.tag == "Player")
         {
             if (gm)
@@ -47,17 +46,12 @@ public class Collectible : MonoBehaviour
 
     void Collected()
     {
-        // Audio hook here
-
-        // Visual hook
-        // Disable MeshRenderer
+        // Audio hook here:
+        // Visual hook here:
         mr.enabled = false;
-        // Enable particle emission (disabled on gameobject to prevent firing at start)
         var em = ps.emission;
         em.enabled = true;
-        // Particle emission
         ps.Play();
-        // Destroy gameobject
         Destroy(this.gameObject, 1f);
     }
 

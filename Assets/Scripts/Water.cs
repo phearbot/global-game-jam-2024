@@ -6,13 +6,10 @@ public class Water : MonoBehaviour
 {
     public float scrollSpeed = 0.02f;
     public Renderer rend;
-    GameManager gm;
 
     void Start()
     {
         rend = GetComponent<Renderer>();
-        gm = FindAnyObjectByType<GameManager>();
-
     }
 
     void Update()
@@ -25,11 +22,9 @@ public class Water : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {   
         if(collision.gameObject.tag == "Player")
-        {   
-            if (gm)
-            {
-                gm.RestartLevel();
-            }
+        {
+            Player player = collision.gameObject.GetComponent<Player>();
+            player.PlayerDeath();
         }
     }
 }
