@@ -46,7 +46,7 @@ public class Collectible : MonoBehaviour
 
     void Collected()
     {
-        // Audio hook here:
+        AudioManager.instance.Play("collect");
         // Visual hook here:
         mr.enabled = false;
         var em = ps.emission;

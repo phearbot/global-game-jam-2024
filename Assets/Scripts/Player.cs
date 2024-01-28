@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
             return;
 
         isDead = true;
-        // Audio hook here:
+        AudioManager.instance.Play("die");
 
         // Visual hook here:
         rb.constraints = RigidbodyConstraints.FreezeRotation;

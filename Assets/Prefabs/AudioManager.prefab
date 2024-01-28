@@ -45,4 +45,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGMFadeTimer: 2
-  sounds: []
+  sounds:
+  - name: BGM
+    clip: {fileID: 8300000, guid: 226626865301846f0b6a26238e9d8c1f, type: 3}
+    volume: 0.683
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: scroll
+    clip: {fileID: 8300000, guid: 1a5044ed32bd04d15813df8d34e00259, type: 3}
+    volume: 0.698
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: laugh
+    clip: {fileID: 8300000, guid: 1c44c7528476f4f989fbdeaebcfed51b, type: 3}
+    volume: 0.698
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: collect
+    clip: {fileID: 8300000, guid: 6c9e5cfdf1a654e949035542f0bc6bf4, type: 3}
+    volume: 0.698
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: win
+    clip: {fileID: 8300000, guid: cf0ff065aba5649ad8364e8dc4959c2a, type: 3}
+    volume: 0.698
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}
+  - name: die
+    clip: {fileID: 8300000, guid: 9bb03183d5d0942c69f8b2605b863269, type: 3}
+    volume: 0.698
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    source: {fileID: 0}

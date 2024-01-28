@@ -92,6 +92,35 @@ public class GameManager : MonoBehaviour
 
     }
 
+    IEnumerator NextLevel()
+    {
+        // Add a catch for the end of the game
+
+
+        yield return new WaitForSeconds(.5f);
+        dialoguePanel.gameObject.SetActive(true);
+
+        // spawns level
+        SpawnLevel(currentLevelIndex);
+        currentLevelIndex++;
+
+        FindObjectOfType<Player>().transform.position = new Vector3(0, 5.5f, 0);
+
+        // sets message with scrolling text
+        yield return StartCoroutine(dialoguePanel.SetMessage("Let's do another!"));
+
+        // zoom into the guys head
+        yield return StartCoroutine(ZoomIntoHead());
+
+        // give player control
+        dialoguePanel.gameObject.SetActive(false);
+        collectionPanel.gameObject.SetActive(true);
+        funnyGuy.SetActive(false);
+        // state = STATE.playing;
+        playerCanMove = true;
+    }
+
+
     public IEnumerator EndLevel()
     {
         // state = STATE.waiting;
@@ -106,7 +135,7 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(dialoguePanel.SetMessage("Ha ha... That one was pretty good."));
 
 
-        yield return StartLevel();
+        yield return NextLevel();
     }
 
     // Used when player falls out of arena
@@ -142,6 +171,7 @@ public class GameManager : MonoBehaviour
 
         if (itemsCollected == itemsInLevel)
         {
+            AudioManager.instance.Play("win");
             StartCoroutine(EndLevel());
         }
     }
@@ -162,7 +192,7 @@ public class GameManager : MonoBehaviour
     {
         outsideCamera.enabled = true;
         funnyGuy.SetActive(true);
-        dialoguePanel.gameObject.SetActive(true);
+        
         dialoguePanel.ZeroOutMessage();
 
         var dolly = outsideCamera.GetCinemachineComponent<CinemachineTrackedDolly>();
@@ -172,20 +202,22 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+
+        dialoguePanel.gameObject.SetActive(true);
     }
 
     void PlayRandomLaugh()
     {
         int selector = Random.Range(0, 4);
-
+        print("selector: " + selector);
         if (selector == 0)
-            AudioManager.instance.PlaySubclip("laugh", 1f, 6f);
+            AudioManager.instance.PlaySubclip("laugh", 1f, 5f);
         else if (selector == 1)
-            AudioManager.instance.PlaySubclip("laugh", 7f, 13f);
+            AudioManager.instance.PlaySubclip("laugh", 7f, 6f);
         else if (selector == 2)
-            AudioManager.instance.PlaySubclip("laugh", 14f, 20f);
+            AudioManager.instance.PlaySubclip("laugh", 14f, 6f);
         else if (selector == 3)
-            AudioManager.instance.PlaySubclip("laugh", 20f, 26f);
+            AudioManager.instance.PlaySubclip("laugh", 20f, 6f);
     }
 
 
