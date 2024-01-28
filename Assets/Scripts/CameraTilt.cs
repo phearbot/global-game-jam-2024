@@ -27,7 +27,11 @@ public class CameraTilt : MonoBehaviour
     }
 
     public void Move()
-    {   
+    {
+        if (player == null)
+            player = GameObject.FindObjectOfType<Player>();
+
+
         Vector3 forceVector = player.forceVector;
 
         if (forceVector != Vector3.zero)

@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public MeshRenderer mr;
     public ParticleSystem ps;
 
+    bool isDead = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -22,6 +24,13 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!gm.playerCanMove)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+            return;
+        }
+
+        rb.constraints = RigidbodyConstraints.None;
         float horizontalInput = Input.GetAxis("Horizontal");
         float forwardInput = Input.GetAxis("Vertical");
 
@@ -55,6 +64,10 @@ public class Player : MonoBehaviour
 
     public void PlayerDeath()
     {
+        if (isDead)
+            return;
+
+        isDead = true;
         // Audio hook here:
 
         // Visual hook here:

@@ -7,14 +7,18 @@ public class CollectionPanel : MonoBehaviour
 {
     [SerializeField] WordContainer wordContainerPrefab;
 
+    public List<WordContainer> wordContainers;
+
+    private void Awake()
+    {
+        //PurgeChildren();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        PurgeChildren();
 
-        AddWord("chicken", Color.red);
-        AddWord("road", Color.green);
-        AddWord("side", Color.blue);
+
     }
 
     // Update is called once per frame
@@ -23,18 +27,20 @@ public class CollectionPanel : MonoBehaviour
         
     }
 
-    void PurgeChildren()
-    { 
+    public void PurgeChildren()
+    {
+        print("purging children");
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
         }
     }
 
-    void AddWord(string word, Color color)
+    public void AddWord(string word, Color color)
     {
         print("adding");
         WordContainer container = Instantiate(wordContainerPrefab, transform);
+        wordContainers.Add(container);
 
         container.container.text = word;
         container.container.outlineColor = color;
@@ -44,5 +50,30 @@ public class CollectionPanel : MonoBehaviour
         container.fill.enabled = false;
 
     }
-    
+
+    public void SetWordToCompleteByColorTag(string tag)
+    {
+        int index = 0;
+        if (tag == "Collectible-Red")
+            index = 0;
+        else if (tag == "Collectible-Green")
+            index = 1;
+        else if (tag == "Collectible-Blue")
+            index = 2;
+        else if (tag == "Collectible-Yellow")
+            index = 3;
+        else
+            print("you fucked up big time");
+
+        wordContainers[index].fill.enabled = true;
+    }
+
+    public void ResetCollectedStates()
+    {
+        foreach (var word in wordContainers)
+        {
+            word.fill.enabled = false;
+        }
+    }
+
 }
