@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     public enum STATE { intro, waiting, playing }
     STATE state = STATE.intro;
+
+    // Collectible stats
+    int itemsCollected = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +52,6 @@ public class GameManager : MonoBehaviour
         currentLevelIndex = levelIndex;
         currentLevel = Instantiate(Levels[levelIndex]);
     }
-
 
     public IEnumerator StartLevel()
     {
@@ -81,6 +84,26 @@ public class GameManager : MonoBehaviour
         state = STATE.waiting;
 
         yield return StartCoroutine(ZoomOutOfHead());
+    }
+
+    // Used when player falls out of arena
+    public void RestartLevel()
+    {
+        // audio hook here
+        Invoke("Reload", 0.5f);
+    }
+
+    // Will need to switch to current scene
+    private void Reload()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    // Used for item collection
+    public void ItemCollected(GameObject collectible)
+    {
+        print($"Collected: " + collectible.tag);
+        itemsCollected += 1;
     }
 
     IEnumerator ZoomIntoHead()
