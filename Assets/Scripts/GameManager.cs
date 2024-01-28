@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         collectionPanel.gameObject.SetActive(false);
+        dialoguePanel.gameObject.SetActive(false);
         //SpawnLevel(1);
         //SpawnLevel(2);
 
@@ -51,6 +52,9 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator StartLevel()
     {
+        yield return new WaitForSeconds(.5f);
+        dialoguePanel.gameObject.SetActive(true);
+
         // spawns level
         SpawnLevel(currentLevelIndex);
         currentLevelIndex++;

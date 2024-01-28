@@ -32,7 +32,7 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator ScrollText()
     {
-
+        AudioManager.instance.Play("scroll");
         while (visibleCharacters < messageTMP.text.Length)
         {
             visibleCharacters += Time.deltaTime * textScrollSpeed;
@@ -40,6 +40,7 @@ public class Dialogue : MonoBehaviour
 
             yield return null;
         }
+        AudioManager.instance.Stop("scroll");
     }
 
     public IEnumerator ReadJoke()
