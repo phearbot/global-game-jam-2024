@@ -5341,6 +5341,7 @@ GameObject:
   - component: {fileID: 2541774552189623760}
   - component: {fileID: 2307313648457533705}
   - component: {fileID: 8358639785957262443}
+  - component: {fileID: 8027813026997869371}
   m_Layer: 0
   m_Name: World 2
   m_TagString: Untagged
@@ -5687,6 +5688,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8027813026997869371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901071443260487604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676adcd2057874a6b90450089766ad2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joke: 'How do you find Will Smith in the snow?
+
+    . . .
+
+    You look for the
+    "Fresh Prints".'
+  collectibles:
+  - {fileID: 7873604752881532706}
+  - {fileID: 8925737243019166909}
+  - {fileID: 2763348802411381537}
+  - {fileID: 8844001744284149671}
+  words:
+  - find
+  - Will
+  - Smith
+  - snow
 --- !u!1 &2574076756729025566
 GameObject:
   m_ObjectHideFlags: 0

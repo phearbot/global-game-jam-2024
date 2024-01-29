@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3620821517908817652}
   - component: {fileID: 3876349840047786128}
   - component: {fileID: 445658551031756336}
+  - component: {fileID: 6250481439189049680}
   m_Layer: 0
   m_Name: World 3
   m_TagString: Untagged
@@ -4169,6 +4170,30 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6250481439189049680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2468422480616595168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676adcd2057874a6b90450089766ad2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joke: "What do you call a soldier who survived mustard gas and pepper spray? \nA
+    seasoned veteran."
+  collectibles:
+  - {fileID: 7570533339375147158}
+  - {fileID: 1488863603068321106}
+  - {fileID: 6882160066802626543}
+  - {fileID: 148565865730928805}
+  words:
+  - soldier
+  - survived
+  - mustard
+  - pepper
 --- !u!1001 &324862760815674988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4237,6 +4262,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6bd850800f2bf3439a194affbf88b70, type: 3}
+--- !u!114 &148565865730928805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 472292108402177737, guid: c6bd850800f2bf3439a194affbf88b70,
+    type: 3}
+  m_PrefabInstance: {fileID: 324862760815674988}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d381a912f311b5e4bbced60a7fd42208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1304599649593388842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1628326751261632838, guid: c6bd850800f2bf3439a194affbf88b70,
@@ -4317,6 +4354,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 465566916875106464}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7570533339375147158 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8032707952516702262, guid: 431c64d44381d534dab23439ddc1e168,
+    type: 3}
+  m_PrefabInstance: {fileID: 465566916875106464}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d381a912f311b5e4bbced60a7fd42208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &878415040103411445
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4391,6 +4440,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 878415040103411445}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6882160066802626543 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6031051957750153498, guid: 8fc0268137c24e94e8cbb6acf6154f39,
+    type: 3}
+  m_PrefabInstance: {fileID: 878415040103411445}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d381a912f311b5e4bbced60a7fd42208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5338357870646144421
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4459,6 +4520,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1d0aa406c1241943b0c9179ec48f4d1, type: 3}
+--- !u!114 &1488863603068321106 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6826377022888153335, guid: b1d0aa406c1241943b0c9179ec48f4d1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5338357870646144421}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d381a912f311b5e4bbced60a7fd42208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1667034805403471976 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6717074183803600333, guid: b1d0aa406c1241943b0c9179ec48f4d1,

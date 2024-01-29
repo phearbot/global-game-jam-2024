@@ -19926,6 +19926,7 @@ GameObject:
   - component: {fileID: 1563601689916746919}
   - component: {fileID: 9035491989963686884}
   - component: {fileID: 5596087700179158043}
+  - component: {fileID: 1254172330001991595}
   m_Layer: 0
   m_Name: World 4
   m_TagString: Untagged
@@ -25575,3 +25576,26 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1254172330001991595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9068768757649171982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 676adcd2057874a6b90450089766ad2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  joke: What do you call a joke without a punchline?
+  collectibles:
+  - {fileID: 8032707952516702262}
+  - {fileID: 6826377022888153335}
+  - {fileID: 6031051957750153498}
+  - {fileID: 472292108402177737}
+  words:
+  - what
+  - call
+  - joke
+  - punchline

@@ -4,12 +4,14 @@ using UnityEngine;
 using Cinemachine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //public enum STATE { intro, waiting, playing }
 
 public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
+    public Image blackPanel;
 
     [SerializeField]
     List<GameObject> Levels;
@@ -20,7 +22,7 @@ public class GameManager : MonoBehaviour
     public CollectionPanel collectionPanel;
     [SerializeField] GameObject funnyGuy;
 
-    int currentLevelIndex = 0;
+    public int currentLevelIndex = 0;
     GameObject currentLevel = null;
 
 
@@ -95,15 +97,13 @@ public class GameManager : MonoBehaviour
 
     IEnumerator NextLevel()
     {
-        // Add a catch for the end of the game
-
-
         yield return new WaitForSeconds(.5f);
         dialoguePanel.gameObject.SetActive(true);
 
         // spawns level
         SpawnLevel(currentLevelIndex);
         currentLevelIndex++;
+        itemsCollected = 0;
 
         FindObjectOfType<Player>().transform.position = new Vector3(0, 5.5f, 0);
 
@@ -131,12 +131,40 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(dialoguePanel.SetMessage("Oh, I remember now!"));
         yield return new WaitForSeconds(.5f);
         yield return StartCoroutine(dialoguePanel.SetMessage(joke));
+
+        if (currentLevelIndex == 4)
+        {
+            yield return new WaitForSeconds(1f);
+            yield return StartCoroutine(EndGame());
+
+            yield return new WaitForSeconds(10f);
+            SceneManager.LoadScene(0);
+
+            yield break;
+        }
+
         PlayRandomLaugh();
-        yield return new WaitForSeconds(6.5f);
+        yield return new WaitForSeconds(6f);
         yield return StartCoroutine(dialoguePanel.SetMessage("Ha ha... That one was pretty good."));
 
-
         yield return NextLevel();
+    }
+
+    IEnumerator EndGame()
+    {
+        print("running end game coroutine");
+        var color = blackPanel.color;
+
+        while (color.a < 1)
+        {
+            color.a += Time.deltaTime;
+            blackPanel.color = color;
+
+            yield return null;
+        }
+
+        print("yeah we're about to laugh");
+        PlayRandomLaugh();
     }
 
     // Used when player falls out of arena

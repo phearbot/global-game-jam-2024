@@ -515,6 +515,18 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 747035855}
+--- !u!114 &554061157 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3078820344450099917, guid: a3a36456db609b34a8c3f472fcd53fb8,
+    type: 3}
+  m_PrefabInstance: {fileID: 272657304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617507945
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,7 +584,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This is what the guy is saying, brooo
+  m_text: "What do you call a soldier who survived mustard gas and pepper spray?
+    \nA seasoned veteran."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 83b58dd3754884065bda49d5c7ba894e, type: 2}
   m_sharedMaterial: {fileID: 7723232666058461108, guid: 83b58dd3754884065bda49d5c7ba894e,
@@ -965,6 +978,7 @@ RectTransform:
   m_Children:
   - {fileID: 1943750347}
   - {fileID: 1225449442}
+  - {fileID: 1965555604}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1620,6 +1634,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textScrollSpeed: 30
   messageTMP: {fileID: 617507947}
+--- !u!1 &1965555603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1965555604}
+  - component: {fileID: 1965555606}
+  - component: {fileID: 1965555605}
+  m_Layer: 5
+  m_Name: BlackPanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1965555604
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965555603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1125282150}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1965555605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965555603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: bb79f75eef7ef4409a39fc22eab587fb, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1965555606
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965555603}
+  m_CullTransparentMesh: 1
 --- !u!1001 &2091733697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1944,9 +2033,14 @@ PrefabInstance:
       objectReference: {fileID: 33564137}
     - target: {fileID: 1780788301491614097, guid: 239500535c362425f867bd4e0e8d376f,
         type: 3}
+      propertyPath: blackPanel
+      value: 
+      objectReference: {fileID: 1965555605}
+    - target: {fileID: 1780788301491614097, guid: 239500535c362425f867bd4e0e8d376f,
+        type: 3}
       propertyPath: insideCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 554061157}
     - target: {fileID: 1780788301491614097, guid: 239500535c362425f867bd4e0e8d376f,
         type: 3}
       propertyPath: playerPrefab
@@ -1988,7 +2082,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Levels.Array.data[1]
       value: 
-      objectReference: {fileID: 7850997241326322213, guid: fa7aaddbf2f93554382869bc572f5ecb,
+      objectReference: {fileID: 1901071443260487604, guid: fa7aaddbf2f93554382869bc572f5ecb,
         type: 3}
     - target: {fileID: 1780788301491614097, guid: 239500535c362425f867bd4e0e8d376f,
         type: 3}
@@ -2000,7 +2094,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Levels.Array.data[3]
       value: 
-      objectReference: {fileID: 8999720509706090390, guid: 40cff06a0e10637419df9751ae74746d,
+      objectReference: {fileID: 9068768757649171982, guid: f876b68576dde044397448e11f81681b,
         type: 3}
     - target: {fileID: 4261914611730650730, guid: 239500535c362425f867bd4e0e8d376f,
         type: 3}

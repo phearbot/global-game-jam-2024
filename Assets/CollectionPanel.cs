@@ -34,6 +34,8 @@ public class CollectionPanel : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
+        wordContainers = new List<WordContainer>();
     }
 
     public void AddWord(string word, Color color)
